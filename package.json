@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@hookform/error-message": "^2.0.0",
-    "bcryptjs": "^2.4.3",
-    "react-hook-form": "^7.39.1",
-    "validator": "^13.7.0"
-  }
-}

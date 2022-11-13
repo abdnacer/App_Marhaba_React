@@ -1,25 +1,21 @@
-require('dotenv').config()
-
 const express = require('express')
-const mongoose = require('mongoose')
-const workoutRoutes = require('./routes/workout')
-const userRoutes = require('./routes/user')
-const port = process.env.PORT
-
 const app = express()
+require('dotenv').config()
+require('./config/db')
+require('./models')
+const bodyParser = require('body-parser')
+const port = process.env.PORT || 4444
 
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({extended: true}))
 
-// app.use((req, res, next) => {
-//   console.log(req.path, req.method)
-//   next()
-// })
+const userRouter = require('./routes/userRouter')
+const roleRouter = require('./routes/roleRouter')
 
-// routes
-// app.use('/api/workouts', workoutRoutes)
-app.use('/api/user', userRoutes)
+app.use('/api/auth', userRouter)
+app.use('/api/user', roleRouter)
+app.all('*', (req, res) => {
+  res.send('Page not found')
+})
 
-mongoose.connect(process.env.URL, () => console.log('connect database'))
-
-app.listen(port, () => console.log(`server is running on ${port}`))
+app.listen(port, () => console.log(`server is running on port ${port}`))
