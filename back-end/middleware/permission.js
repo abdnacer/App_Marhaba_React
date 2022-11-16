@@ -2,13 +2,13 @@ const storage = require('local-storage')
 
 const authPermission = async (req, res, next) => {
   const token = storage('token')
-  if(token) res.send('You are already connected')
+  if (token) res.send('You are already connected')
   else next()
 }
 
 const userPermission = async (req, res, next) => {
   const token = storage('token')
-  if(!token) res.send('You are Not connected')
+  if (!token) res.send('You are Not connected')
   else next()
 }
 
