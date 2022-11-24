@@ -1,6 +1,6 @@
-import { React, useState, Fragment } from 'react';
+import { React, useState, Fragment, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { isAuthenticated, isClient } from './helpers';
+import { isAuthenticated } from './helpers';
 import './App.css';
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
@@ -11,9 +11,6 @@ import PageNotFound from './components/auth/PageNotFound'
 import Client from './components/user/Client'
 import Manager from './components/user/Manager'
 import Livreur from './components/user/Livreur'
-
-
-
 
 function App() {
 
@@ -44,8 +41,6 @@ function App() {
         <Route path='/manager' element={<PrivateRoute> <Manager /> </PrivateRoute>} />
         <Route path='/livreur' element={<PrivateRoute> <Livreur /> </PrivateRoute>} />
         <Route path='*' element={<PageNotFound />} />
-
-
       </Routes>
     </BrowserRouter>
   );

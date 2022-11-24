@@ -1,0 +1,14 @@
+1- Create File the "Dockerfile"
+
+2- Create Network par command :
+    * docker network create livraison-marhaba-app-backend
+
+3- executez un container basé sur l'image mongo :
+    * docker container run -d --name livraison-marhaba-db -v livraison-marhaba-db:/data/db --network livraison-marhaba-app-backend mongo
+
+4- Entrer dans le dossier du serveur ou se trouver Dockerfile et creer cette image :
+    * docker build -t livraison-marhaba-backend .
+
+5- exécutez un container basé sur cette image que vous venez de créer :
+    * docker container run -d --name livraison-marhaba-container -v ${pwd}:/app -v /app/node_modules --network 
+      livraison-marhaba-app-backend -p 4044:4044 livraison-marhaba-backend
