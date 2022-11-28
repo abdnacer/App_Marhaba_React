@@ -70,21 +70,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-<!-- Dooocker -->
+## Dooocker 
 
-1- Create File the "Dockerfile"
+**Etape1: ** Create File the "Dockerfile"
 
-2- Create Network par command :
-    * docker network create livraison-marhaba-app-frontend
+    FROM node:16
 
-3- executez un container basé sur l'image mongo :
-    * docker container run -d --name livraison-marhaba-db-frontend -v livraison-marhaba-db:/data/db --network 
-      livraison-marhaba-app-frontend mongo
+    WORKDIR /app
 
-4- Entrer dans le dossier du serveur ou se trouver Dockerfile et creer cette image :
-    * docker build -t livraison-marhaba-frontend .
+    COPY package.json .
 
-5- exécutez un container basé sur cette image que vous venez de créer :
-    * docker container run -d --name livraison-marhaba-app-frontend -v ${pwd}:/app -v /app/node_modules --network livraison-marhaba-app-frontend -p 3000:3000 livraison-marhaba-app-frontend-docker:test
+    RUN npm install
+
+    COPY . .
+
+    EXPOSE 3000
+
+    CMD ["npm", "start"]
+
+**Etape2 :** Create Network par command :
+
+    docker network create livraison-marhaba-app-frontend
+
+**Etape3 :** Entrer dans le dossier du serveur ou se trouver Dockerfile et creer cette image :
+
+    docker build -t livraison-marhaba-frontend .
+
+**Etape4 :** exécutez un container basé sur cette image que vous venez de créer :
+
+    docker container run -d --name livraison-marhaba-app-frontend -v ${pwd}:/app -v /app/node_modules --network livraison-marhaba-app-frontend -p 3000:3000 livraison-marhaba-app-frontend-docker:test
 
 

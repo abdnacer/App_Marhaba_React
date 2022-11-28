@@ -1,32 +1,54 @@
-1- Create File the "Dockerfile"
+ ## Docker
 
-2- Create Network par command :
-    * docker network create livraison-marhaba-app-backend
 
-3- executez un container basé sur l'image mongo :
-    * docker container run -d --name livraison-marhaba-db -v livraison-marhaba-db:/data/db --network livraison-marhaba-app-backend mongo
+**Etape1:** Create File the `Dockerfile`
 
-4- Entrer dans le dossier du serveur ou se trouver Dockerfile et creer cette image :
-    * docker build -t livraison-marhaba-backend .
+    FROM node:16
 
-5- exécutez un container basé sur cette image que vous venez de créer :
-    * docker container run -d --name livraison-marhaba-container -v ${pwd}:/app -v /app/node_modules --network 
-      livraison-marhaba-app-backend -p 4044:4044 livraison-marhaba-backend
+    WORKDIR /app
 
-<!-- Testunitaire (JEST) -->
+    COPY package.json .
 
-Etape1 : Install Jest and superTest
+    RUN npm install
 
-Etape2 : Require package 'SuperTest' and file server 
+    COPY . .
 
-Etape3 : Create function Describe for testing Login
+    EXPOSE 3000
 
-Etape4 : Check to 3 message Error
+    CMD ["npm", "start"]
 
-Etape5 : Create function Describe for testing Register
+**Etape2 :** Create Network par command :
 
-Etape6 : Check to 3 message Error
+    docker network create livraison-marhaba-app-backend
 
-Etape7 : Create function Describe for testing Forgot Password
+**Etape3 :** executez un container basé sur l'image mongo :
 
-Etape8 : Check to 1 message Error
+    docker container run -d --name livraison-marhaba-db -v livraison-marhaba-db:/data/db --network livraison-marhaba-app-backend mongo
+
+**Etape4 :** Entrer dans le dossier du serveur ou se trouver Dockerfile et creer cette image :
+
+    docker build -t livraison-marhaba-backend .
+
+**Etape5 :** exécutez un container basé sur cette image que vous venez de créer :
+
+    docker container run -d --name livraison-marhaba-container -v ${pwd}:/app -v /app/node_modules --network livraison-marhaba-app-backend -p 4044:4044 livraison-marhaba-backend
+
+ 
+ ## Testunitaire (JEST)
+
+
+**Etape1 :** Install Jest and superTest
+
+**Etape2 :** Require package 'SuperTest' and file server 
+
+**Etape3 :** Create function Describe for testing Login
+
+**Etape4 :** Check to 3 message Error
+
+**Etape5 :** Create function Describe for testing Register
+
+**Etape6 :** Check to 3 message Error
+
+**Etape7 :** Create function Describe for testing Forgot Password
+
+**Etape8 :** Check to 1 message Error
