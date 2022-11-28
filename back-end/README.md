@@ -13,4 +13,20 @@
     * docker container run -d --name livraison-marhaba-container -v ${pwd}:/app -v /app/node_modules --network 
       livraison-marhaba-app-backend -p 4044:4044 livraison-marhaba-backend
 
+<!-- Testunitaire (JEST) -->
 
+Etape1 : Install Jest and superTest
+
+Etape2 : Require package 'SuperTest' and file server 
+
+Etape3 : Create function Describe for testing Login
+
+Etape4 : Check to 3 message Error
+
+Etape5 : Create function Describe for testing Register
+
+Etape6 : Check to 3 message Error
+
+Etape7 : Create function Describe for testing Forgot Password
+
+Etape8 : Check to 1 message Error
