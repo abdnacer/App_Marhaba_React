@@ -4,7 +4,6 @@ const cors = require('cors')
 require('dotenv').config()
 require('./config/db')
 require('./models')
-const bodyParser = require('body-parser')
 const port = process.env.PORT || 4444
 
 app.use(cors())

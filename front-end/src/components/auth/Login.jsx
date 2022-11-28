@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { ReactDOM } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from './child_components/Input'
 import Button from './child_components/Button'
 import Label from './child_components/Label'
